@@ -5,7 +5,6 @@ metadata:
   labels:
     app: webapp
 spec:
-  minReadySeconds: 30
   selector:
     matchLabels:
       app: webapp
