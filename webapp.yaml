@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: webapp
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release1
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
 ---
 apiVersion: v1
 kind: Service
@@ -29,5 +32,4 @@ spec:
   - name: http
     port: 80
     nodePort: 30080
-
   type: NodePort
